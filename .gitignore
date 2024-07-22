@@ -1,0 +1,9 @@
+node_modules/
+.env
+*.log
+*_sessions/
+dist/
+*.png
+/TODO.md
+/queue.class.log
+/.rollup.cache
