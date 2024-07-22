@@ -1,24 +1,40 @@
 import "dotenv/config";
-import BotWhatsapp from "@bot-whatsapp/bot";
-import database from "./database";
+import {
+  createBot,
+  createFlow,
+  createProvider,
+  MemoryDB,
+} from "@bot-whatsapp/bot";
 import provider from "./provider";
+import database from "@database/index";
 import flow from "./flow";
-import { initServer } from "@services/http";
+import { handleCtx } from "@bot-whatsapp/provider-baileys";
 
 /**
- * Funcion principal del bot
+ *
  */
 const main = async () => {
+  provider.initHttpServer(3002);
 
-  console.clear();
-
-  const botInstance = await BotWhatsapp.createBot({
-    database,
-    provider,
-    flow,
+  provider.http.server.post(
+    "/send-message",
+    handleCtx(async (bot, req, res) => {
+      const body = req.body;
+      const message = body.message;
+      const phoneNumber = body.phoneNumber;
+      const mediaUrl = body.mediaUrl;
+      console.log("url imagen", mediaUrl);
+      await bot.sendMessage(phoneNumber, message, {
+        media: mediaUrl,
+      });
+      res.end("Esto desde el server de polka");
+    })
+  );
+  await createBot({
+    flow: createFlow([flow]),
+    database: new MemoryDB(),
+    provider: provider,
   });
-
-  initServer(botInstance);
 };
 
 main();

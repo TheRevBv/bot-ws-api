@@ -1,4 +1,6 @@
-import BotWhatsapp from '@bot-whatsapp/bot';
-import ProviderWS from '@bot-whatsapp/provider/venom' //Se cambia el provider de Baileys por el provider de venom
+import { createProvider } from "@bot-whatsapp/bot";
+import { BaileysProvider } from "@bot-whatsapp/provider-baileys";
+// import { VenomProvider } from "@bot-whatsapp/provider-venom";
 
-export default BotWhatsapp.createProvider(ProviderWS)
+// export default createProvider(VenomProvider);
+export default createProvider(BaileysProvider);
