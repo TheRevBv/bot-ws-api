@@ -3,7 +3,7 @@ node_modules/
 *.log
 *_sessions/
 dist/
-*.png
+*qr.png
 /TODO.md
 /queue.class.log
 /.rollup.cache

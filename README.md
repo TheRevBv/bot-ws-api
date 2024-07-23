@@ -32,18 +32,51 @@ Para contribuir al proyecto, por favor sigue los siguientes pasos:
 
 MIT
 
-## Autor de ConsorcioAGA
+## Autor
 
 - [Joshua Morin](https://github.com/TheRevBv)
 
 ### Ejemplo de uso
 
-```javascript
-const { sendMessage } = require('./src/whatsapp');
+```typescript
+-- Agregar en services/index.ts
+import { handleCtx } from "@bot-whatsapp/provider-baileys";
 
-sendMessage('573002222222', 'Hola, soy un chatbot');
+const main = async () => {
+  const ctx = await handleCtx({
+    phone: "573002222222",
+    message: "Hola, soy un mensaje de prueba",
+  });
+
+  console.log(ctx);
+};
+```
+
+- Las rutas las puedes consultar en
+
+```typescript
+-- src/routes/index.ts
+
+server.post("/ruta", callbackFn())
+server.get("/ruta", callbackFn())
+
 ```
 
 ## Documentación
 
 Puedes encontrar más información en la [documentación](https://bot-whatsapp.netlify.app/docs/flows/)
+
+## Endpoints
+
+- GET /qr -> Retorna un QR para escanear y loguearse en WhatsApp
+- POST /send-message -> Envia un mensaje a un número de WhatsApp
+-- Ejemplo de uso
+
+```json
+{
+  "phone": "573002222222",
+  "message": "Hola, soy un mensaje de prueba",
+  // optional params
+  "imageUrl": "https://img.freepik.com/vector-gratis/diseno-icono-whatsapp_23-2147900927.jpg"
+}
+```
