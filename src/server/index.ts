@@ -1,9 +1,7 @@
-import { setRoutes } from "../routes";
-import provider from "../provider";
+import { setRoutes } from "../routes/index";
+import provider from "../provider/index";
 
-export const startServer = (port: number) => {
-  provider.initHttpServer(port);
-
+export const handleServices = () => {
   // Ruta para enviar mensajes
   setRoutes(provider.http.server);
 };

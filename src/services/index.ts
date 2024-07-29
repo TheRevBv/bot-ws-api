@@ -1,9 +1,8 @@
+import { inHandleCtx } from "@bot-whatsapp/provider-baileys";
 import "dotenv/config";
-import { handleCtx } from "@bot-whatsapp/provider-baileys";
-// import { handleCtx } from "@bot-whatsapp/provider-venom";
 import { Request, Response } from "express";
 
-export const handleSendMessage = handleCtx(
+export const handleSendMessage = inHandleCtx(
   async (bot, req: Request, res: Response) => {
     try {
       const phonePrefix = process.env.PREX_PHONE_DEFAULT || "";
