@@ -2,7 +2,7 @@
 
 ## Descripción
 
-API para envio de mensajes de chatbot a WhatsApp, utilizando la librería [Bot WhatsApp](https://bot-whatsapp.netlify.app/docs/flows/)
+API para envio de mensajes de chatbot a WhatsApp, utilizando la librería [Bot WhatsApp](https://www.builderbot.app/en)
 
 ## Instalación
 

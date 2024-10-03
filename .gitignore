@@ -8,3 +8,4 @@ dist/
 /queue.class.log
 /.rollup.cache
 tokens/
+.DS_Store
