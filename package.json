@@ -15,11 +15,16 @@
     "@builderbot/bot": "1.2.2",
     "@builderbot/database-mysql": "1.2.2",
     "@builderbot/provider-baileys": "1.2.2",
-    "dotenv": "^16.4.5"
+    
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "polka": "^0.5.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
     "@types/node": "^20.11.30",
+    "@types/polka": "^0.5.7",
+    "@types/express": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.4.0",
     "eslint": "^8.57.1",
