@@ -1,9 +1,8 @@
-import { createBot, createFlow } from "@builderbot/bot";
-import { adapterDB, adapterProvider } from "../adapters";
+import { createBot } from "@builderbot/bot";
+import { adapterDB, adapterProvider, adapterFlow } from "../adapters";
 import { Request, Response } from "express";
 
 export const initializeBot = async () => {
-  const adapterFlow = createFlow([]);
   const { handleCtx, httpServer } = await createBot({
     flow: adapterFlow,
     provider: adapterProvider,
@@ -15,9 +14,8 @@ export const initializeBot = async () => {
 
 export const handleSendMessage = async (res: Response, req: Request) => {
   const { phoneNumber, message, urlMedia } = req.body;
-  //   await sendMessage(number, message, urlMedia);
   await adapterProvider.sendMessage(phoneNumber, message, {
     media: urlMedia ?? null,
   });
-  return res.end("Mensaje enviado");
+  return res.end("Mensaje correctamente enviado a " + phoneNumber);
 };
