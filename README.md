@@ -40,16 +40,15 @@ MIT
 
 ```typescript
 -- Agregar en services/index.ts
-import { handleCtx } from "@bot-whatsapp/provider-baileys";
 
-const main = async () => {
-  const ctx = await handleCtx({
-    phone: "573002222222",
-    message: "Hola, soy un mensaje de prueba",
+export const handleSendMessage = async (res: Response, req: Request) => {
+  const { phoneNumber, message, urlMedia } = req.body;
+  await adapterProvider.sendMessage(phoneNumber, message, {
+    media: urlMedia ?? null,
   });
-
-  console.log(ctx);
+  return res.end("Mensaje correctamente enviado a " + phoneNumber);
 };
+
 ```
 
 - Las rutas las puedes consultar en
@@ -58,7 +57,7 @@ const main = async () => {
 -- src/routes/index.ts
 
 server.post("/ruta", callbackFn())
-server.get("/ruta", callbackFn())
+server.get("/preffix/ruta", callbackFn())
 
 ```
 
