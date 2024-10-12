@@ -1,5 +1,5 @@
 {
-  "name": "base-bailey-json",
+  "name": "bot-ws",
   "version": "1.0.0",
   "description": "",
   "main": "dist/app.js",
@@ -37,6 +37,6 @@
     "typescript": "^5.4.3",
     "typescript-eslint": "^8.8.0"
   },
-  "author": "",
+  "author": "Joshua Morin",
   "license": "ISC"
 }

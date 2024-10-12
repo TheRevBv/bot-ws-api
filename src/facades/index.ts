@@ -15,9 +15,9 @@ export class MessageFacade {
    * Envia un mensaje a través de la API de BuilderBot
    */
   public async sendMessageFacade(): Promise<any> {
-    this.handleCtx(async (_bot: botCtx, req: Request, res: Response) => {
+    this.handleCtx(async (bot: botCtx, req: Request, res: Response) => {
       // Usa el servicio para enviar el mensaje
-      await this.messageService.sendMessage(req, res);
+      await this.messageService.sendMessage(bot, req, res);
     });
   }
 }

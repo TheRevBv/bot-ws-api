@@ -2,7 +2,7 @@ import "dotenv/config";
 import { adapterProvider } from "~/adapters";
 import { MessageFacade } from "~/facades";
 import { MessageService } from "~/services";
-import { handleCtx, botCtx } from "~/types";
+import { handleCtx } from "~/types";
 
 /**
  * Clase para manejar las rutas
@@ -20,14 +20,13 @@ export class Routes {
    * Constructor de la clase Routes
    * @param handleCtx Función que maneja el contexto
    * @param preffix Prefijo de las rutas
-   * @param bot Instancia del bot de BuilderBot
    */
-  constructor(handleCtx: handleCtx, preffix: string, bot: botCtx) {
+  constructor(handleCtx: handleCtx, preffix: string) {
     this.handleCtx = handleCtx;
     this.preffix = preffix;
 
-    // Instanciamos MessageService con el bot
-    const messageService = new MessageService(bot);
+    // Instanciamos MessageService
+    const messageService = new MessageService();
 
     // Creamos la instancia de MessageFacade pasando handleCtx y messageService
     this.facades = new MessageFacade(handleCtx, messageService);

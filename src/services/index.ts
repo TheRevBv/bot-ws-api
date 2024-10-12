@@ -5,28 +5,22 @@ import { botCtx } from "~/types";
  * Clase para manejar el envío de mensajes utilizando el bot de BuilderBot
  */
 export class MessageService {
-  private bot: botCtx;
-
-  /**
-   * Constructor para inicializar la clase con el bot.
-   * @param bot Instancia del bot de BuilderBot
-   */
-  constructor(bot: botCtx) {
-    this.bot = bot;
-  }
-
   /**
    * Método para manejar el envío de mensajes.
    * @param req Petición de tipo Express
    * @param res Respuesta de tipo Express
    * @returns Respuesta con el mensaje de confirmación
    */
-  public async sendMessage(req: Request, res: Response): Promise<void> {
+  public async sendMessage(
+    bot: botCtx,
+    req: Request,
+    res: Response
+  ): Promise<void> {
     const { phoneNumber, message, urlMedia } = req.body;
 
     try {
       // Envía el mensaje a través del bot
-      await this.bot.sendMessage(phoneNumber, message, {
+      await bot.sendMessage(phoneNumber, message, {
         media: urlMedia ?? null,
       });
 
@@ -34,6 +28,7 @@ export class MessageService {
       res.end("Mensaje correctamente enviado a " + phoneNumber);
     } catch (error) {
       // Manejo de errores
+      console.error("Error al enviar el mensaje", error);
       res.status(500).send("Error al enviar el mensaje");
     }
   }
