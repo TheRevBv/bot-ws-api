@@ -67,15 +67,15 @@ Puedes encontrar más información en la [documentación](https://bot-whatsapp.n
 
 ## Endpoints
 
-- GET /qr -> Retorna un QR para escanear y loguearse en WhatsApp
-- POST /send-message -> Envia un mensaje a un número de WhatsApp
+- GET / -> Retorna un QR para escanear y loguearse en WhatsApp
+- POST /api/send-message -> Envia un mensaje a un número de WhatsApp
 -- Ejemplo de uso
 
 ```json
 {
-  "phone": "573002222222",
+  "number": "+573002222222",
   "message": "Hola, soy un mensaje de prueba",
   // optional params
-  "imageUrl": "https://img.freepik.com/vector-gratis/diseno-icono-whatsapp_23-2147900927.jpg"
+  "urlMedia": "https://img.freepik.com/vector-gratis/diseno-icono-whatsapp_23-2147900927.jpg"
 }
 ```

@@ -1,5 +1,4 @@
-import { Request, Response } from "express";
-import { botCtx } from "~/types";
+import configs from "~/config";
 
 /**
  * Clase para manejar el envío de mensajes utilizando el bot de BuilderBot
@@ -11,25 +10,26 @@ export class MessageService {
    * @param res Respuesta de tipo Express
    * @returns Respuesta con el mensaje de confirmación
    */
-  public async sendMessage(
-    bot: botCtx,
-    req: Request,
-    res: Response
-  ): Promise<void> {
-    const { phoneNumber, message, urlMedia } = req.body;
+  public async sendMessage(bot: any, req: any, res: any): Promise<any> {
+    let { number } = req.body;
+    const { message, urlMedia } = req.body;
 
     try {
+      if (number) {
+        number = `${configs.PREX_PHONE_DEFAULT}${number}`;
+      }
+      console.log("mi num", number);
       // Envía el mensaje a través del bot
-      await bot.sendMessage(phoneNumber, message, {
+      await bot.sendMessage(number, message, {
         media: urlMedia ?? null,
       });
 
       // Respuesta en caso de éxito
-      res.end("Mensaje correctamente enviado a " + phoneNumber);
+      return res.end("Mensaje correctamente enviado a " + number);
     } catch (error) {
       // Manejo de errores
       console.error("Error al enviar el mensaje", error);
-      res.status(500).send("Error al enviar el mensaje");
+      return res.end("Error al enviar el mensaje");
     }
   }
 }
