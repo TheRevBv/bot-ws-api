@@ -1,4 +1,5 @@
 import { MessageService } from "~/services";
+import { botCtx, PolkaRequest } from "~/types";
 
 export class MessageFacade {
   public _messageService: MessageService;
@@ -10,12 +11,13 @@ export class MessageFacade {
   /**
    * Envia un mensaje a través de la API de BuilderBot
    */
-  public async sendMessageFacade(bot, req, res): Promise<any> {
+  public async sendMessageFacade(
+    bot: botCtx,
+    req: PolkaRequest,
+    res
+  ): Promise<any> {
     try {
-      // const { number, message, urlMedia } = req.body;
-      // console.log(req.body);
-      // await bot.sendMessage(number, message, { media: urlMedia ?? null });
-      // return res.end("sended");
+      // return this._messageService.sendMessage(bot, req, res);
       return this._messageService.sendMessage(bot, req, res);
     } catch (error) {
       console.error("Hubo un error en la paqueteria", error);

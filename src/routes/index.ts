@@ -36,10 +36,6 @@ export class Routes {
         `/${this.preffix}/send-message`,
         this.handleCtx(async (bot, req, res) => {
           return await this.facades.sendMessageFacade(bot, req, res);
-          // const { number, message, urlMedia } = req.body;
-          // console.log(req.body);
-          // await bot.sendMessage(number, message, { media: urlMedia ?? null });
-          // return res.end("sended");
         })
       );
     } catch (error) {
