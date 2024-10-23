@@ -38,6 +38,8 @@ const envSchema = Joi.object({
   EXTERNAL_DB_USER: Joi.string(),
   EXTERNAL_DB_PASSWORD: Joi.string(),
   EXTERNAL_DB_DATABASE: Joi.string(),
+
+  FILE_SERVER_PATH: Joi.string(),
 }).unknown(); // Permitir variables de entorno adicionales
 
 // Validar las variables de entorno
@@ -75,6 +77,8 @@ const configs = {
   EXTERNAL_DB_USER: envVars.EXTERNAL_DB_USER,
   EXTERNAL_DB_PASSWORD: envVars.EXTERNAL_DB_PASSWORD,
   EXTERNAL_DB_DATABASE: envVars.EXTERNAL_DB_DATABASE,
+
+  FILE_SERVER_PATH: envVars.FILE_SERVER_PATH,
 };
 
 export default configs;
