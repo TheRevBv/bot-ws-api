@@ -26,11 +26,13 @@ const envSchema = Joi.object({
   OPENAI_API_KEY: Joi.string(),
 
   // Configuración de la base de datos MySQL
-  MYSQL_DB_HOST: Joi.string().ip().required(),
-  MYSQL_DB_PORT: Joi.number().default(3306),
-  MYSQL_DB_USER: Joi.string().required(),
-  MYSQL_DB_PASSWORD: Joi.string().required(),
-  MYSQL_DB_NAME: Joi.string().required(),
+  DB_HOST: Joi.string().required(),
+  DB_PORT: Joi.number().default(3306),
+  DB_USER: Joi.string().required(),
+  DB_PASSWORD: Joi.string().required(),
+  DB_NAME: Joi.string().required(),
+  DB_ENCRYPT: Joi.boolean(),
+  DB_TRUST_SERVER_CERTIFICATE: Joi.boolean().required(),
 
   // Configuración de la base de datos externa
   EXTERNAL_DB_HOST: Joi.string(),
@@ -66,11 +68,13 @@ const configs = {
   ENVIRONMENT: envVars.ENVIRONMENT,
   OPENAI_API_KEY: envVars.OPENAI_API_KEY,
 
-  MYSQL_DB_HOST: envVars.MYSQL_DB_HOST,
-  MYSQL_DB_PORT: envVars.MYSQL_DB_PORT,
-  MYSQL_DB_USER: envVars.MYSQL_DB_USER,
-  MYSQL_DB_PASSWORD: envVars.MYSQL_DB_PASSWORD,
-  MYSQL_DB_NAME: envVars.MYSQL_DB_NAME,
+  DB_HOST: envVars.DB_HOST,
+  DB_PORT: envVars.DB_PORT,
+  DB_USER: envVars.DB_USER,
+  DB_PASSWORD: envVars.DB_PASSWORD,
+  DB_NAME: envVars.DB_NAME,
+  DB_ENCRYPT: envVars.DB_ENCRYPT,
+  DB_TRUST_SERVER_CERTIFICATE: envVars.DB_TRUST_SERVER_CERTIFICATE,
 
   EXTERNAL_DB_HOST: envVars.EXTERNAL_DB_HOST,
   EXTERNAL_DB_PORT: envVars.EXTERNAL_DB_PORT,

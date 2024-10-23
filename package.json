@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./dist/app.js",
     "lint": "eslint . --no-ignore",
-    "dev": "npm run lint && nodemon ./src/app.ts",
+    "dev": "pnpm run lint && nodemon ./src/app.ts",
     "build": "npx rollup -c"
   },
   "keywords": [],
@@ -20,11 +20,13 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "joi": "^17.13.3",
+    "mssql": "^11.0.1",
     "polka": "^0.5.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
     "@types/express": "^5.0.0",
+    "@types/mssql": "^9.1.5",
     "@types/node": "^20.11.30",
     "@types/polka": "^0.5.7",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
